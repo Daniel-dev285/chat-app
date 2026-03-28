@@ -14,7 +14,7 @@ export const signupSchema = z.object({
 
 export const loginSchema = z.object({
     email: z
-        .email("Invalid email format"),
+        .string(),
     password: z
         .string()
 }).strict()

@@ -20,7 +20,7 @@ export class MessageController {
             const { id: userToChatId } = req.params
             const myId = req.user._id
 
-            const messages = Message.find({
+            const messages = await Message.find({
                 $or: [
                     { senderId: myId, receiverId: userToChatId },
                     { senderId: userToChatId, receiverId: myId },
@@ -31,7 +31,6 @@ export class MessageController {
         } catch (error) {
             console.log("Error in getMessages", error.message)
             res.status(500).json({ message: "Internal Server Error" })
-
         }
     }
     

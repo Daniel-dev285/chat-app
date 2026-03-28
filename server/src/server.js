@@ -76,9 +76,9 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(cookieParser())
 app.use('/api/auth', authRoutes)
-app.use('/api/message', messageRoutes)
+app.use('/api/messages', messageRoutes)
 
 server.listen(PORT, () => {
     console.log(`Server is running on port http://localhost:${PORT}`)
-    connectDB() 
+    connectDB()
 })

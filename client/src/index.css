@@ -1,2 +1,9 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@import "@fontsource/oswald/700.css";
+
+body {
+    color: #fff;
+    font-family: "Oswald";
+    background-color: #000;
+}
+

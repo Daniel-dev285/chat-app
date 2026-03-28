@@ -1,10 +1,21 @@
 export interface authUser {
-    id: string
-    username: string
+     _id: string
+    email: string,
+    fullName: string,
+    profilePic?: string,
+    createdAt: string,
+    updatedAt: string,
+}
+
+export interface authSignup {
+    fullName: string
     email: string
-    profilePicture: string
-    createdAt: string
-    updatedAt: string
+    password: string
+}
+
+export interface authLogin {
+    email: string
+    password: string
 }
 
 export interface authStore {
@@ -12,8 +23,11 @@ export interface authStore {
     isSigningUp: boolean
     isLoggingIng: boolean
     isUpdatingProfile: boolean
-
     isCheckingAuth: boolean
+    onlineUsers: authUser[]
 
     checkAuth: () => Promise<void>
+    signup: (data: authSignup) => Promise<void>
+    login: (data: authLogin) => Promise<void>
+    logout: () => Promise<void>
 }
