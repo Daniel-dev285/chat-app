@@ -22,6 +22,8 @@ export interface ChatStore {
     getUsers: () => Promise<void>
     getMessages: (userId: string | undefined) => Promise<void>
     sendMessages: (message: {text: string}) => Promise<void>
-    setSelectedUser: (selectedUser: authUser) => void
+    subscribeToMessages: () => void
+    unsubscribeToMessages: () => void
+    setSelectedUser: (selectedUser: authUser | null) => void
 }
 

@@ -6,12 +6,16 @@ interface Props {
     user: authUser
     onClick?: () => void
     className?: string
-    onlineUsers: authUser[]
+    onlineUsers: string[]
 }
 
-function UserCard({user, onClick, className, onlineUsers}: Props) {
+function UserCard({ user, onClick, className, onlineUsers }: Props) {
     return (
         <motion.div
+            whileHover={{ scale: 1.02, rotate: -2 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ scale: 0.8, rotate: -1 }}
+            animate={{ scale: 1, rotate: -1 }}
             onClick={onClick}
             key={user._id}
             className={cn(
@@ -33,7 +37,7 @@ function UserCard({user, onClick, className, onlineUsers}: Props) {
                 </div>
                 <div className="flex">
                     <span className="text-sm">
-                        {onlineUsers.some(u => u._id === user._id) ? "Online" : "Offline"}
+                        {onlineUsers.includes(user._id) ? "Online" : "Offline"}
                     </span>
                 </div>
             </div>

@@ -53,7 +53,7 @@ function LoginPage() {
         className="bg-black border-4 border-white p-8 w-95 shadow-[8px_8px_0px_#fff]"
       >
         {/* Title */}
-        <h1 className="text-4xl font-extrabold mb-6  skew-x-[-10deg]">
+        <h1 className="text-4xl font-extrabold mb-6 skew-x-[-10deg]">
           LOGIN
         </h1>
 

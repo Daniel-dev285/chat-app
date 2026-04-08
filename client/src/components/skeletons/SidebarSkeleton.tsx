@@ -1,5 +1,3 @@
-import { Users } from "lucide-react";
-
 const SidebarSkeleton = () => {
     // Create 8 skeleton items
     const skeletonContacts = Array(7).fill(null);
@@ -11,10 +9,7 @@ const SidebarSkeleton = () => {
         >
             {/* Header */}
             <div className="border-b-2 border-[#0a0a0a] w-full p-5">
-                <div className="flex items-center gap-2">
-                    <Users className="w-6 h-6" />
-                    <span>Contacts</span>
-                </div>
+                <div className="flex items-center gap-2"></div>
             </div>
 
             {/* Skeleton Contacts */}
@@ -26,7 +21,7 @@ const SidebarSkeleton = () => {
                             <div className="skeleton bg-[#080808] size-12 " />
                         </div>
 
-                        {/* User info skeleton - only visible on larger screens */}
+                        {/* User info skeleton */}
                         <div className="flex flex-col">
                             <div className="skeleton bg-[#080808] h-4 w-32 mb-2" />
                             <div className="skeleton bg-[#080808] h-3 w-16" />

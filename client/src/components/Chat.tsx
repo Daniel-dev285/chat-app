@@ -5,11 +5,15 @@ import ChatHistory from "./ChatHistory"
 import ChatInput from "./ChatInput"
 
 function Chat() {
-  const { messages, isMessagesLoading, getMessages, selectedUser } = useChatStore()
+  const { messages, isMessagesLoading, getMessages, selectedUser , subscribeToMessages , unsubscribeToMessages } = useChatStore()
 
   useEffect(() => {
     getMessages(selectedUser?._id)
-  }, [getMessages, selectedUser?._id])
+
+    subscribeToMessages()
+
+    return () => unsubscribeToMessages()
+  }, [getMessages, selectedUser?._id, subscribeToMessages, unsubscribeToMessages])
 
 
   return (

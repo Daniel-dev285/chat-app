@@ -10,9 +10,9 @@ function MessageBox({ message, className }: Props) {
   return (
     <div
       className={cn(
-        "bg-red-600 max-w-lg border-2 border-white shadow-[4px_4px_0px_white] px-5 py-2", className)}
+        "max-w-lg px-5 py-3", className)}
     >
-      <p>
+      <p className="">
         {message.text}
       </p>
     </div>

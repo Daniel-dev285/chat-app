@@ -7,3 +7,16 @@ body {
     background-color: #000;
 }
 
+
+@layer utilities {
+    .clip-polygon-in {
+        background-color: red;
+        clip-path: polygon(2% 8%, 95% 15%, 78% 15%, 92% 0, 88% 15%, 100% 15%, 98% 92%, 10% 100%, 0 85%);
+    }
+
+    .clip-polygon-out {
+        background: white;
+        color: black;
+        clip-path: polygon(0 15%, 12% 15%, 8% 0, 22% 15%, 98% 8%, 100% 85%, 92% 100%, 5% 92%);
+    }
+}

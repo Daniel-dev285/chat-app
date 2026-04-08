@@ -3,6 +3,7 @@ import API from "../lib/axios";
 import { showError } from "../lib/toast";
 import axios from "axios";
 import { type ChatStore } from "../types/chat.type";
+import { useAuthStore } from "./useAuthStore";
 
 export const useChatStore = create<ChatStore>((set, get) => ({
     messages: [],
@@ -45,7 +46,7 @@ export const useChatStore = create<ChatStore>((set, get) => ({
 
     sendMessages: async (message) => {
         const { selectedUser, messages } = get()
-            
+
         try {
             const response = await API.post(`/messages/send/${selectedUser?._id}`, message)
             set({ messages: [...messages, response.data] })
@@ -56,6 +57,23 @@ export const useChatStore = create<ChatStore>((set, get) => ({
                 showError("Unexpected error")
             }
         }
+    },
+
+    subscribeToMessages: () => {
+        const { selectedUser } = get()
+        if (!selectedUser) return
+
+        const socket = useAuthStore.getState().socket
+
+        socket?.on('newMessage', (newMessage) => {
+            if (newMessage.senderId !== selectedUser._id) return
+            set({ messages: [...get().messages, newMessage] })
+        })
+    },
+
+    unsubscribeToMessages: () => {
+        const socket = useAuthStore.getState().socket
+        socket?.off('newMessage')
     },
 
     setSelectedUser: (selectedUser) => set({ selectedUser }),

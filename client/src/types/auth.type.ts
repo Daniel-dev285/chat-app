@@ -1,3 +1,5 @@
+import type { Socket } from "socket.io-client"
+
 export interface authUser {
      _id: string
     email: string,
@@ -20,14 +22,18 @@ export interface authLogin {
 
 export interface authStore {
     authUser: authUser | null
+    socket: Socket | null
     isSigningUp: boolean
     isLoggingIng: boolean
     isUpdatingProfile: boolean
     isCheckingAuth: boolean
-    onlineUsers: authUser[]
+    onlineUsers: string[]
 
     checkAuth: () => Promise<void>
     signup: (data: authSignup) => Promise<void>
     login: (data: authLogin) => Promise<void>
     logout: () => Promise<void>
+    updateProfile : (data) => Promise<void>
+    connectSocket: () => void
+    disconnectSocket: () => void
 }
